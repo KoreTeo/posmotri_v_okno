@@ -46,21 +46,6 @@ input {
   appearance: none;
 }
 
-.visually-hidden {
-  position: absolute;
-  inline-size: 1px;
-  block-size: 1px;
-  overflow: hidden;
-  clip: rect(0 0 0 0);
-  clip-path: inset(50%);
-  white-space: nowrap;
-}
-
-.preloader {
-  position: absolute;
-  inset: 0;
-}
-
 /*  main document  */
 
 .content {
@@ -295,10 +280,19 @@ input {
   outline-offset: 1px;
 }
 
-
 .content__card-link:focus,
 .button:focus,
 .search-form__textfield:focus,
 .search-form__checkbox:focus {
   appearance: none;
+}
+
+.visually-hidden {
+  position: absolute;
+  inline-size: 1px;
+  block-size: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  white-space: nowrap;
 }
