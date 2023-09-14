@@ -17,8 +17,8 @@ html {
   inline-size: 1200px;
   block-size: 100%;
   margin: auto;
-  color: #fff;
-  font-family: 'Fira Sans Condensed', sans-serif;
+  color: #FFF;
+  font-family: "Fira Sans Condensed", Arial, sans-serif;
   font-size: 18px;
   background-color: #1b1919;
 }
@@ -42,14 +42,13 @@ ol {
   list-style: none;
 }
 
-input {
+input, button {
   appearance: none;
 }
 
 /*  main document  */
-
 .content {
-  max-width: 1140px;
+  max-block-size: 1140px;
   display: flex;
   align-items: flex-end;
   gap: 30px;
@@ -73,11 +72,11 @@ input {
 .search-form {
   display: flex;
   justify-content: space-between;
-  align-items: flex-end;
+  align-items: flex-start;
 }
 
 .search-form__fieldset-title {
-  font-family: Fira Sans Condensed, serif;
+  font-family: "Fira Sans Condensed", Arial, Helvetica, sans-serif;
   font-size: 18px;
   font-weight: 400;
   margin-bottom: 5px;
@@ -89,6 +88,7 @@ input {
 
 .search-form__label {
   display: flex;
+  gap: 5px;
   width: fit-content;
   cursor: pointer;
 }
@@ -105,15 +105,24 @@ input {
   font-size: inherit;
   font-family: inherit;
   font-weight: 400;
+  cursor: pointer;
+}
+
+.search-form__textfield:hover {
+  cursor: text;
 }
 
 .search-form__textfield:active {
-  background-color: transparent;
-  border: none;
+  border: 1px solid #FFF;
 }
 
-.search-form__textfield:focus-visible {
-  outline: 1px solid #fff;
+.search-form__textfield:focus {
+  outline: none;
+}
+
+/* псевдоэлемент :has не поддерживается по умолчанию в Mozilla Firefox*/
+.search-form__textfield:has(:focus-visible) {
+  outline: 1px solid #FFF;
   outline-offset: 1px;
 }
 
@@ -125,46 +134,46 @@ input {
 .search-form__pseudo-checkbox {
   display: flex;
   align-items: center;
+  justify-content: center;
   align-self: center;
   width: 19px;
   height: 19px;
-  margin-right: 5px;
-  border: 1px solid #fff;
+  border: 1px solid #FFF;
   background-color: transparent;
 }
 
-.search-form__checkbox:checked + .search-form__pseudo-checkbox {
-  display: flex;
+.search-form__checkbox:checked + .search-form__pseudo-checkbox::after{
+  content: "";
+  display: block;
   width: 15px;
   height: 15px;
-  outline: 1px solid #fff;
-  outline-offset: 1px;
-  background-color: #fff;
-  margin: 2px 7px 2px 2px;
-}
-
-.search-form__pseudo-checkbox:active {
   background-color: #FFF;
 }
 
-.search-form__label:has(.search-form__checkbox:focus-visible) {
-  outline: 1px solid #fff;
+.search-form__checkbox:focus {
+  outline: none;
+}
+
+/* псевдоэлемент :has не поддерживается по умолчанию в Mozilla Firefox*/
+.search-form__label:has(:focus-visible) {
+  outline: 1px solid #FFF;
   outline-offset: 1px;
 }
 
-.search-form__label:has(.search-form__checkbox):hover {
+.search-form__label:hover .search-form__label-text {
   text-decoration: underline;
 }
 
 .search-form__submit-button {
   width: 194px;
+  align-self: flex-end;
 }
 
 .title {
-  font-family: Oswald, sans-serif;
+  font-family: "Oswald", sans-serif;
   font-size: 75px;
   font-weight: 700;
-  line-height: 94%;
+  line-height: 0.94;
   text-transform: uppercase;
 }
 
@@ -193,9 +202,8 @@ input {
   flex-grow: 1;
   display: block;
   padding: 0 0 0 2px;
-  color: #fff;
+  color: #FFF;
   text-decoration: none;
-  outline: none;
   margin: 5px;
 }
 
@@ -205,13 +213,16 @@ input {
 
 .content__card-link:hover {
   cursor: pointer;
-  color: #fff;
   text-decoration: underline;
   text-decoration-skip-ink: none;
 }
 
+.content__card-link:focus {
+  outline: none;
+}
+
 .content__card-link:focus-visible {
-  outline: 1px solid #fff;
+  outline: 1px solid #FFF;
   outline-offset: -1px;
 }
 
@@ -226,7 +237,7 @@ input {
 .content__video-card-title {
   font-family: Oswald, sans-serif;
   font-size: 30px;
-  font-weight: bold;
+  font-weight: 700;
   text-transform: uppercase;
 }
 
@@ -238,7 +249,7 @@ input {
 }
 
 .content__video-card-description {
-  line-height: 90%;
+  line-height: 0.9;
 }
 
 .content__video-card-description-container{
@@ -246,7 +257,7 @@ input {
   flex-direction: column;
   gap: 6px;
   flex-grow: 1;
-  text-decoration: none;
+
 }
 
 .more-button {
@@ -263,7 +274,7 @@ input {
   color: inherit;
   font-family: inherit;
   font-size: inherit;
-  font-weight: bold;
+  font-weight: 700;
   cursor: pointer;
 }
 
@@ -275,16 +286,13 @@ input {
   text-decoration: underline;
 }
 
-.button:focus-visible {
-  outline: 1px solid #fff;
-  outline-offset: 1px;
+.button:focus {
+  outline: none;
 }
 
-.content__card-link:focus,
-.button:focus,
-.search-form__textfield:focus,
-.search-form__checkbox:focus {
-  appearance: none;
+.button:focus-visible {
+  outline: 1px solid #FFF;
+  outline-offset: 1px;
 }
 
 .visually-hidden {
